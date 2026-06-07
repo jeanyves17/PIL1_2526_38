@@ -23,3 +23,4 @@ if __name__ == "__main__":
     print("=" * 55)
 
     flask_app.run(host=host, port=port, debug=debug)
+
