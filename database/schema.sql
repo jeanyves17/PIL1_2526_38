@@ -1,5 +1,12 @@
--- 0. Nettoyage (suppression dans l'ordre inverse des dépendances)
+-- =============================================================
+--  IFRI_MentorLink – Base de données complète
+--  SGBD : PostgreSQL
+--  Encodage : UTF-8
+-- =============================================================
 
+-- -------------------------------------------------------------
+-- 0. Nettoyage (suppression dans l'ordre inverse des dépendances)
+-- -------------------------------------------------------------
 DROP TABLE IF EXISTS messages                  CASCADE;
 DROP TABLE IF EXISTS conversations             CASCADE;
 DROP TABLE IF EXISTS resultats_correspondance  CASCADE;
@@ -24,9 +31,9 @@ DROP TYPE  IF EXISTS statut_demande            CASCADE;
 DROP TYPE  IF EXISTS statut_offre              CASCADE;
 DROP TYPE  IF EXISTS statut_conversation       CASCADE;
 
-
+-- =============================================================
 -- 1. TYPES ÉNUMÉRÉS
-
+-- =============================================================
 
 -- Niveaux d'études possibles
 CREATE TYPE niveau_etudes AS ENUM (
@@ -54,9 +61,9 @@ CREATE TYPE statut_conversation AS ENUM (
     'active', 'archivée'
 );
 
-
+-- =============================================================
 -- 2. FILIÈRES
-
+-- =============================================================
 
 CREATE TABLE filieres (
     id          SERIAL       PRIMARY KEY,
@@ -72,9 +79,9 @@ INSERT INTO filieres (code, intitule) VALUES
     ('SE_IoT', 'Systèmes Embarqués & IoT'),
     ('SI',     'Systèmes d''Information');
 
-
+-- =============================================================
 -- 3. UTILISATEURS
-
+-- =============================================================
 
 CREATE TABLE utilisateurs (
     id                  SERIAL        PRIMARY KEY,
@@ -100,9 +107,9 @@ CREATE INDEX idx_utilisateurs_email     ON utilisateurs(email);
 CREATE INDEX idx_utilisateurs_telephone ON utilisateurs(telephone);
 CREATE INDEX idx_utilisateurs_filiere   ON utilisateurs(filiere_id);
 
-
+-- =============================================================
 -- 4. COMPÉTENCES / MATIÈRES
-
+-- =============================================================
 
 CREATE TABLE competences (
     id          SERIAL       PRIMARY KEY,
@@ -131,9 +138,9 @@ CREATE TABLE lacunes_utilisateur (
     UNIQUE (utilisateur_id, competence_id)
 );
 
-
+-- =============================================================
 -- 5. CRÉNEAUX HORAIRES & DISPONIBILITÉS
-
+-- =============================================================
 
 -- Plages horaires de référence (ex. Lundi 8h-10h)
 CREATE TABLE creneaux_horaires (
@@ -153,9 +160,9 @@ CREATE TABLE disponibilites_utilisateur (
     UNIQUE (utilisateur_id, creneau_id)
 );
 
-
+-- =============================================================
 -- 6. OFFRES ET DEMANDES DE MENTORAT
-
+-- =============================================================
 
 -- Offres : un mentor propose de l'aide
 CREATE TABLE offres_mentorat (
@@ -207,9 +214,9 @@ CREATE TABLE creneaux_demande (
     PRIMARY KEY (demande_id, creneau_id)
 );
 
-
+-- =============================================================
 -- 7. RÉPONSES AUX OFFRES / DEMANDES
-
+-- =============================================================
 -- Un utilisateur répond à une offre ou une demande existante.
 -- Exactement l'un des deux (offre_id ou demande_id) doit être renseigné.
 
@@ -231,9 +238,9 @@ CREATE TABLE reponses_mentorat (
     )
 );
 
-
+-- =============================================================
 -- 8. ALGORITHME DE CORRESPONDANCE – RÉSULTATS
-
+-- =============================================================
 
 CREATE TABLE resultats_correspondance (
     id                      SERIAL       PRIMARY KEY,
@@ -255,9 +262,9 @@ CREATE TABLE resultats_correspondance (
 -- Index pour trier rapidement par score décroissant
 CREATE INDEX idx_correspondance_score ON resultats_correspondance(score_total DESC);
 
-
+-- =============================================================
 -- 9. SESSIONS DE MENTORAT
-
+-- =============================================================
 
 CREATE TABLE sessions_mentorat (
     id                  SERIAL         PRIMARY KEY,
@@ -272,9 +279,9 @@ CREATE TABLE sessions_mentorat (
     cree_le             TIMESTAMPTZ    NOT NULL DEFAULT NOW()
 );
 
-
+-- =============================================================
 -- 10. MESSAGERIE
-
+-- =============================================================
 
 -- Une conversation regroupe exactement deux utilisateurs
 CREATE TABLE conversations (
@@ -303,9 +310,9 @@ CREATE INDEX idx_messages_expediteur   ON messages(expediteur_id);
 -- Index partiel : uniquement les messages non lus (pour les notifications)
 CREATE INDEX idx_messages_non_lus      ON messages(conversation_id) WHERE est_lu = FALSE;
 
-
+-- =============================================================
 -- 11. TRIGGER – mise à jour automatique de modifie_le
-
+-- =============================================================
 
 -- Fonction appelée automatiquement avant chaque UPDATE
 CREATE OR REPLACE FUNCTION maj_modifie_le()
@@ -331,9 +338,9 @@ CREATE TRIGGER declencheur_demandes_modifie
     BEFORE UPDATE ON demandes_mentorat
     FOR EACH ROW EXECUTE FUNCTION maj_modifie_le();
 
-
+-- =============================================================
 -- 12. VUES UTILES
-
+-- =============================================================
 
 -- Vue : profil complet d'un utilisateur avec sa filière
 CREATE OR REPLACE VIEW vue_profils_utilisateurs AS
@@ -443,6 +450,6 @@ JOIN conversations conv ON conv.id = msg.conversation_id
 JOIN utilisateurs exp   ON exp.id  = msg.expediteur_id
 WHERE msg.est_lu = FALSE;
 
-
-
-
+-- =============================================================
+-- FIN DU SCRIPT
+-- =============================================================
