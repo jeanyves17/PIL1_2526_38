@@ -74,10 +74,10 @@ CREATE TABLE filieres (
 -- Données de base des filières de l'IFRI
 INSERT INTO filieres (code, intitule) VALUES
     ('IA',     'Intelligence Artificielle'),
-    ('IM',     'Ingénierie Mathématique'),
+    ('IM',     'Internet et Multimedia'),
     ('GL',     'Génie Logiciel'),
     ('SE_IoT', 'Systèmes Embarqués & IoT'),
-    ('SI',     'Systèmes d''Information');
+    ('SI',     'Securité Informatique');
 
 -- =============================================================
 -- 3. UTILISATEURS
