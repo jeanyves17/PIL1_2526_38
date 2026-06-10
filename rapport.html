@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport de Fin de Projet - IFRI MentorLink</title>
+</head>
+<body>
+    <h1>RAPPORT DE FIN DE PROJET</h1>
+    <h1>IFRI_MentorLink</h1>
+    <h2>Groupe38</h2>
+
+    <h3>Membres du groupe</h3>
+    <ul>
+        <li>ADOMOU Emmanuel</li>
+        <li>AZANMASSOU Yéname Josaphat</li>
+        <li>DEGBE Solis Jade</li>
+        <li>HOUGBENOU Dagbégnon Jean Yves</li>
+        <li>KOUDJENOUME Jean Paul</li>
+        <li>HOUGNI Jonathan</li>
+        <li>SAGBO Sydney Michèle</li>
+    </ul>
+
+    <h3>Sous la supervision de</h3>
+    <ul>
+        <li>M. Ratheil HOUNDJI</li>
+        <li>M. Armand ACCROMBESSI</li>
+        <li>Mme Maryse GAHOU</li>
+    </ul>
+    <h6>Année académique:2025-2026</h6>
+
+    <p>
+        Dans le but de nous permettre de mettre en pratique les compétences acquises
+        au cours de cette année académique, nous avons été amenés à réaliser un projet
+        intégrateur visant à mettre en œuvre les connaissances acquises en développement web,
+        en bases de données et algèbre relationnelle, en programmation Python ainsi qu'en
+        algorithmique. Ce projet nous a également permis de développer notre capacité à
+        collaborer efficacement au sein d'une équipe.
+    </p>
+
+    <h3>Objectifs du projet</h3>
+
+    <ul>
+        <li>
+            Mettre en œuvre une solution informatique en utilisant les outils et techniques
+            étudiés dans les enseignements suivants : Algorithmique, Développement Web,
+            Théorie des Bases de Données et Algèbre Relationnelle, SGBD et Langage SQL,
+            ainsi que Programmation Python.
+        </li>
+
+        <li>
+            Collaborer avec des pairs à la réalisation d'un projet de développement
+            d'application en utilisant des outils de gestion de projet et de versionnement
+            tels que Git, tout en appliquant les bonnes pratiques du travail en équipe.
+        </li>
+
+        <li>
+            Développer des compétences en communication technique en présentant les
+            démarches suivies, les résultats obtenus et les limites rencontrées à travers
+            un rapport technique, une documentation, un fichier README et une présentation orale.
+        </li>
+    </ul>
+    <h4>Technologie Utiliser</h4>
+    <table border="1">
+        <tr>
+            <th>Technologie</th>
+            <th>Utilisation</th>   
+        </tr>
+        <tr>
+            <td>Jinja2</td>
+            <td>HTML/CSS</td>
+        </tr>
+        <tr>
+            <td>Java script</td>
+            <td>Java script</td>
+        </tr>
+        <tr>
+            <td>postgrèSQL</td>
+            <td>Base de données</td>
+        </tr>
+        <tr>
+            <td>Flask</td>
+            <td>Python</td>
+        </tr>
+        <tr>
+            <td>Git</td>
+            <td>Dépot des livrables</td>
+        </tr>
+    </table>
+    <h4>Repartiton des Tache</h4>
+    <table border="1">
+        <tr>
+            <th>Taches</th>
+            <th>Participant</th>   
+        </tr>
+        <tr>
+            <td>Développement Frontend:Création de l'interface utilisateur et des page</td>
+            <td>Jean-Paul K. </td>
+        </tr>
+        <tr>
+            <td>Developpement Backend:Mise en place du logiciel serveur ,gestion des requetes et API</td>
+            <td>Josaphat A.,Emmanuel A.</td>
+        </tr>
+        <tr>
+            <td>Base de données:Conception du schéma, création des tables SQL et gestion des données.</td>
+            <td>Jade D./Jean Yves H.</td>
+        </tr>
+        <tr>
+            <td> Intégration système:
+             Liaison entre frontend, backend et base de données pour obtenir une application fonctionnelle.</td>
+            <td>à définir</td>
+        </tr>
+        <tr>
+            <td> Tests et débogage:
+             Vérification du bon fonctionnement, correction des erreurs et amélioration de la stabilité.</td>
+            <td>JonathanH.</td>
+        </tr>
+        <tr>
+            <td> Gestion de projet & documentation:
+             Organisation du travail, suivi de l’avancement, et rédaction du rapport / documentation technique.</td>
+            <td>Sydney S.</td>
+        </tr>
+    </table>
+    <h4>Réalisation du projet</h4>
+    <ul>
+        <li>Analyse des besoins</li>
+        <p>Dans le cadre de notre projet de mentorat notre application doit etre dans la capaciter de permettre l'inscription et la connection des utilisateur puis leur attribuer en fonction de leurs capacité un profil,de planifier les séances de travail et de stoqué les messages échangés.Il doit etre aussi en mesure de sécuriser les données personnelles des utilisateurs,etre rapide dans son fonctionnement et offrir une bonne experiance aux utilisateurs.</p>
+        <li>conception</li>
+        <p>Notre projet a été conçue sur la base d'un frontend,un backend et une base de données.
+        L'application adopte une architecture client-serveur modulaire, avec une séparation claire entre les couches de présentation, de logique métier et d'accès aux données.
+        </p>
+        <ol>Structure</ol>
+        <pre>
+        IFRI_MentorLink/
+        ├── run.py                   # Point d'entrée Flask
+        ├── config.py                # Configuration par environnement
+        ├── requirements.txt         # Dépendances Python
+        ├── .env                     # Variables d'environnement
+        ├── app/
+        │   ├── __init__.py          # Factory function Flask
+                │   ├── models/              # Tables BDD (SQLAlchemy ORM)
+        │   ├── routes/              # Endpoints Flask (Blueprints)
+        │   ├── services/            # Logique métier
+        │   ├── templates/           # Pages HTML (Jinja2)
+        │   └── static/              # CSS, JS, images
+        ├── database/
+        │   └── schema.sql           # Structure de la BDD
+        └── rapport/
+            └── index.html           # Ce rapport
+        </pre>
+        <OL>Base de données-Tables principales</OL>
+        <p>
+        La base de données PostgreSQL est organisée autour des principales
+        entités du système de mentorat : utilisateurs, profils, demandes
+        de mentorat, correspondances et messagerie.
+        </p>
+
+            <div class="db-grid">
+
+                <div class="db-table">
+                    <div class="db-table-header">utilisateurs</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li>nom</li>
+                    <li>prenom</li>
+                    <li>email — UNIQUE</li>
+                    <li>telephone — UNIQUE</li>
+                    <li>mot_de_passe</li>
+                    <li>date_inscription</li>
+                    <li>filiere</li>
+                    <li>niveau</li>
+                    <li>bio</li>
+                    <li>photo_url</li>
+                    </ul>
+                </div>
+                <div class="db-table">
+                    <div class="db-table-header">compétence</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li>intitulé— UNIQUE</li>
+                    <li><span class="pk">cree_par utilisateur</span> — PK</li>
+                </div>
+                <div class="db-table">
+                    <div class="db-table-header">offres_mentorat</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li><span class="fk">mentor_id</span> — FK</li>
+                    <li>utilisateur_id </li>
+                    </ul>
+                </div>
+                </div>
+                    <div class="db-table">
+                    <div class="db-table-header">demande_mentorat</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li><span class="fk">mentor_id</span> — FK</li>
+                    <li>utilisateur_id </li>
+                    </ul>
+                </div>
+                <div class="db-table">
+                    <div class="db-table-header">session_mentorat</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li><span class="fk">mentor_id</span> — FK</li>
+                    <li><span class="fk">mentore_id</span> — FK</li>
+                    <li>resultats_correspondance(id)</li>
+                    </ul>
+                </div>
+
+                <div class="db-table">
+                    <div class="db-table-header">resultats_correspondance</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li><span class="fk">mentor_id</span> — FK</li>
+                    <li><span class="fk">mentore_id</span> — FK</li>
+                    <li>mentor_id,mentore_id:UNIQUE</li>
+                    <li>demandes_mentorat(id)</li>
+                    </ul>
+                </div>
+
+                <div class="db-table">
+                    <div class="db-table-header">messages</div>
+                    <ul>
+                    <li><span class="pk">id</span> — PK</li>
+                    <li><span class="fk">conversation_id</span> — FK</li>
+                    <li><span class="fk">expediteur_id</span> — FK</li>
+                    <li>contenu</li>
+                    <li>date_envoi</li>
+                    </ul>
+                </div>
+
+            </div>
+        </p>    
+        <li>Développement</li>
+           <p>
+                    Le développement de notre projet vise à concevoir une plateform web permettant de mettre en relation diférent étudiant sous les profil de mentor et mentoré dans différente matière.Cette plateforme offre les fonctionnalitées telles que l'inscription et la connection des utilisateurs,la gestion des profils,l'attribution des mentors ainsi que la planification des séances.<br>
+                    Le frontend a été réalisé avec HTML,CSS et JavaScrit dans le but d'obtenir une interface simple mais fonctionnelle. Le backend a été déveveloppé avec python et java script afin de pourvoir derer les données des utilisateurs ainsi que les interration entrer utilisateur et la base de données avec postgrèSQL pour stocké les différente table(information)
+            </p>
+    </ul>
+    <h4>Difficultés rencontrées et Solution apportées</h4>
+    <ul>
+        <li> Configuration de la base de données pour les tests</li> 
+        Les 30 tests échouaient avec SQLALCHEMY_DATABASE_URI must be set. Résolution : ajouter load_dotenv() dans conftest.py pour que le .env soit chargé avant les tests.
+        <li> Compatibilité PowerShell vs Bash</li> 
+        Les commandes Linux comme mkdir -p app/models app/routes ne fonctionnaient pas sur Windows PowerShell. Résolution : exécuter les mkdir un par un.
+        <li> Conflit Git au premier push</li> 
+        Le dépôt GitHub contenait déjà des fichiers, ce qui rejetait le push. Résolution : git pull origin main --allow-unrelated-histories avant de pusher.
+        <li> Éditeur Vim inattendu lors du merge</li> 
+        Git a ouvert Vim pour le message de merge, bloquant le terminal. Résolution : taper :wq puis Entrée pour sauvegarder et quitter.
+        <li>Mauvaise version de flask-sqlalchemy</li> 
+        La version installée (0.6) était incompatible avec la syntaxe moderne. Détecté grâce à l'avertissement de PyCharm sur requirements.txt.
+        <li>Gestion de la messagerie</li>
+    </ul>
+    <h3> Guide d'utilisation</h3>
+    <P>Guide dutilisation pour les utilisateurs finaux de mentor_link.Il décrit les différentes fonctionnalitées de la platforme</P>
+    <section id="manuel">
+        <div class="container">
+             <h5>1. Inscription</h5>
+            <p>
+            Pour créer un compte, l'utilisateur accède à la page d'inscription, renseigne ses informations personnelles (nom, prénom, email,
+            téléphone et mot de passe), puis valide le formulaire.
+            </p>
+
+            <h5>2. Connexion</h5>
+            <p>
+            Après son inscription, l'utilisateur peut se connecter à l'aide de son adresse email ou de son numéro de téléphone ainsi que de son
+            mot de passe.
+            </p>
+
+            <h5>3. Gestion du profil</h5>
+            <p>
+            L'utilisateur peut compléter ou modifier son profil en ajoutant :
+            </p>
+
+            <ul>
+            <li>Sa filière d'étude ;</li>
+            <li>Son niveau académique ;</li>
+            <li>Ses compétences ;</li>
+            <li>Ses lacunes ;</li>
+            <li>Ses disponibilités ;</li>
+            <li>Une photo de profil .</li>
+            </ul>
+
+            <h5>4. Publication d'une offre ou d'une demande</h5>
+            <p>
+            Les étudiants peuvent publier une offre de mentorat lorsqu'ils
+            souhaitent aider d'autres étudiants ou une demande lorsqu'ils
+            recherchent un accompagnement.
+            </p>
+
+            <h5>5. Consultation des suggestions</h5>
+            <p>
+            Le système analyse les profils et propose automatiquement des
+            correspondances en fonction des compétences, des besoins et des
+            disponibilités des utilisateurs.
+            </p>
+
+            <h5>6. Messagerie</h5>
+            <p>
+            Une fois une correspondance établie, les utilisateurs peuvent
+            échanger des messages en temps réel grâce au module de messagerie
+            intégré à la plateforme.
+            </p>
+
+            <h65>7. Notifications</h5>
+            <p>
+            Les utilisateurs reçoivent des notifications lorsqu'ils obtiennent
+            un nouveau match, un nouveau message ou lorsqu'une demande est
+            acceptée.
+            </p>
+
+            <h5>8. Déconnexion</h5>
+            <p>
+            L'utilisateur peut quitter sa session à tout moment en cliquant sur
+            le bouton « Déconnexion » disponible dans le menu principal.
+            </p>
+
+         </div>
+    </section>
+
+    
+    <h2>Conclusion</h2>
+    <p>Ce projet nous a permis de mettre en pratique et de consolider les compétences acquis tout au long de cette année académique.Il nous a aussi permis de renforcer nos capaciter tout en travallant avec des pairs.</p>
+    
+</body>
+</html>
