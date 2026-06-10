@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offres_demandes</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Offres & demandes de mentorat</h1>
+    <div class="card">
+      <h3>Publier</h3>
+      <div class="grid cols-2">
+        <div><label>Type</label><select>...</select></div>
+        <div><label>Matière / compétence</label><input></div>
+        <div><label>Disponibilités</label><input></div>
+        <div><label>Format</label><select>...</select></div>
+      </div>
+      <label>Description</label><textarea></textarea>
+      <button class="btn">Publier</button>
+    </div>
+    <div class="row">
+      <input placeholder="Rechercher une matière...">
+      <select><option>Tous</option></select>
+      <button class="btn secondary">Filtrer</button>
+    </div>
+    <div id="o_list"></div>
+    <script src="/js/offres.js"></script>
+</body>
+</html>
